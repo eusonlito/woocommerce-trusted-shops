@@ -42,12 +42,12 @@ class WC_TS_Install {
 		// Load Translation for default options
 		$domain = 'woocommerce-trusted-shops';
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-		$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops.mo';
+		$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/'.$domain.'.mo';
 		
-		if ( file_exists( WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo' ) )
-			$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/woocommerce-trusted-shops-' . $locale . '.mo';
+		if ( file_exists( WC_trusted_shops()->plugin_path() . '/i18n/languages/'.$domain.'-' . $locale . '.mo' ) )
+			$mofile = WC_trusted_shops()->plugin_path() . '/i18n/languages/'.$domain.'-' . $locale . '.mo';
 		
-		load_textdomain( 'woocommerce-trusted-shops', $mofile );
+		load_textdomain( $domain, $mofile );
 		
 		if ( ! WC_TS_Dependencies::instance()->is_woocommerce_activated() ) {
 			deactivate_plugins( WC_TRUSTED_SHOPS_PLUGIN_FILE );
